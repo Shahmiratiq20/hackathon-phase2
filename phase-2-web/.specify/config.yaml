@@ -1,0 +1,35 @@
+name: phase2-fullstack-todo
+version: "2.0"
+description: "Phase II - Full-Stack Web Application with Authentication"
+
+structure:
+  specs_dir: ../specs
+  constitution: ../constitution.md
+  claude_instructions: ../CLAUDE.md
+
+components:
+  frontend:
+    path: "./frontend"
+    framework: "Next.js 16"
+    features: ["App Router", "Tailwind CSS", "Better Auth"]
+    
+  backend:
+    path: "./backend"
+    framework: "FastAPI"
+    features: ["SQLModel", "JWT Auth", "PostgreSQL"]
+
+features:
+  basic:
+    - user-authentication
+    - task-crud
+    - multi-user-isolation
+    
+  intermediate:
+    - task-priorities
+    - task-tags
+    - search-filter
+    
+  advanced:
+    - recurring-tasks
+    - due-dates
+    - reminders

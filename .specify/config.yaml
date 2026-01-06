@@ -1,0 +1,18 @@
+name: evolution-todo
+version: "2.0"
+description: "Evolution of Todo - Full-Stack Web Application"
+
+phases:
+  - phase1:
+      name: "Console Application"
+      path: "./phase-1-cli"
+      status: "complete"
+      
+  - phase2:
+      name: "Full-Stack Web Application"
+      path: "./phase-2-web"
+      status: "in-progress"
+      tech: ["Next.js 16", "FastAPI", "SQLModel", "PostgreSQL"]
+
+methodology: spec-driven-development
+approach: claude-code-generation
