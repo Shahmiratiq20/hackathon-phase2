@@ -10,24 +10,22 @@ os.environ['ACCESS_TOKEN_EXPIRE_MINUTES'] = "1440"
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from src.models.database import init_db
-from src.routers import auth_routes, task_routes, chat_routes
+from src.routers import auth_routes, task_routes, chat_routes, tag_routes
 
 # Create FastAPI app
 app = FastAPI(
     title="Todo API",
-    description="Full-Stack Todo Application API with AI Chatbot",
-    version="3.0"
+    description="Full-Stack Todo Application API with AI Chatbot - Phase V Advanced",
+    version="5.0"
 )
 
-# CORS configuration - Updated
+# CORS configuration
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:3000",
+        "http://localhost:3000", 
         "http://127.0.0.1:3000",
-        "http://localhost:3001",  # Agar different port use kar rahe ho
-        "https://*.vercel.app",
-        "*"  # Development ke liye (production mein hata dena)
+        "https://*.vercel.app"
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -38,27 +36,22 @@ app.add_middleware(
 app.include_router(auth_routes.router)
 app.include_router(task_routes.router)
 app.include_router(chat_routes.router)
+app.include_router(tag_routes.router)  # NEW - Phase 5
 
 # Initialize database on startup
 @app.on_event("startup")
 def startup_event():
-    print("🔗 Connecting to database...")
     init_db()
     print("✅ Database initialized!")
     print("🤖 AI Chatbot enabled!")
-    print("🌐 CORS enabled for frontend")
+    print("✨ Phase V Advanced Features enabled!")
 
 # Root endpoint
 @app.get("/")
 def read_root():
     return {
-        "message": "Todo API - Phase III (AI Chatbot)",
+        "message": "Todo API - Phase V (Advanced Cloud Deployment)",
         "status": "running",
-        "version": "3.0",
-        "cors": "enabled"
+        "version": "5.0",
+        "features": ["AI Chatbot", "Priorities", "Tags", "Due Dates"]
     }
-
-# Health check endpoint
-@app.get("/health")
-def health_check():
-    return {"status": "healthy", "database": "connected"}
